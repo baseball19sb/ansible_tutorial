@@ -1,14 +1,14 @@
 ---
 - name: Update Mac Config
   hosts: all
+  roles:
+    - brew
   tasks:
 
   - name: Install homebrew packages
     homebrew:
-      name: "{{ item }}"
+      name: mas
       state: latest
-    with_items:
-      - mas
     tags:
     - brew
   
@@ -17,5 +17,8 @@
       name: "{{ item }}"
     with_items:
       - discord
+      - 1password
+      - balenaetcher
+      - carbon-copy-cloner
 
 
