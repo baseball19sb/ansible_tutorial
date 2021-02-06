@@ -1,0 +1,41 @@
+---
+- name: Check installed apps
+  hosts: all
+  tasks:
+
+  - name: Check for GitHub Desktop
+    stat:
+      path: "/Applications/GitHub Desktop.app"
+    register: app
+
+  - debug:
+      msg: "GitHub is not installed"
+    when: app.stat.isdir is not defined
+
+  - name: Check for Telegram
+    stat:
+      path: "/Applications/Telegram.app"
+    register: app
+
+  - debug:
+      msg: "Telegram is not installed"
+    when: app.stat.isdir is not defined
+
+  - name: Check for iTerm
+    stat:
+      path: "/Applications/iTerm.app"
+    register: app
+
+  - debug:
+      msg: "iTerm is not installed"
+    when: app.stat.isdir is not defined
+
+  - name: Check for Xcode
+    stat:
+      path: "/Applications/Xcode.app"
+    register: app
+
+  - debug:
+      msg: "Xcode is not installed"
+    when: app.stat.isdir is not defined
+      
