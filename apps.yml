@@ -5,14 +5,17 @@
 
   - name: Install homebrew packages
     homebrew:
-      name: mas
+      name: "{{ item }}"
       state: latest
+    with_items:
+      - mas
     tags:
     - brew
+  
+  - name: Install via brew cask
+    homebrew_cask: 
+      name: "{{ item }}"
+    with_items:
+      - discord
 
-  - name: Install MAS apps
-    community.general.mas:
-      id:
-        - 747648890 # Telegram
-        - 1485052491 # Dropzone 4
-      state: present
+
