@@ -1,30 +1,5 @@
 ---
 - name: Update Mac Config
-  hosts: all
-  roles:
-    - brew
-  tasks:
-
-  - name: Install homebrew packages
-    homebrew:
-      name: mas
-      state: latest
-    tags:
-    - brew
-  
-  - name: Install via brew cask
-    homebrew_cask: 
-      name: "{{ item }}"
-    with_items:
-      - 1password
-      - balenaetcher
-      - carbon-copy-cloner
-      - fing
-      - iterm2
-    register: result
-
-
-- name: Update Mac Config
   hosts: laptop 
   roles:
     - brew
@@ -41,7 +16,6 @@
         - synology-chat
         - synology-note-station-client
         - visual-studio-code
-        - wireshark
         - yacreader
         - ytmdesktop-youtube-music
       register: result

@@ -1,0 +1,16 @@
+---
+- name: Update Mac Config
+  hosts: all
+  roles:
+    - brew
+  tasks:
+
+  - name: Install homebrew packages
+    homebrew_cask:
+      name: "{{ item }}"
+    with_items:
+      - 1password
+      - balenaetcher
+      - carbon-copy-cloner
+      - fing
+      - iterm2
