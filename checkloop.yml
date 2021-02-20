@@ -1,0 +1,24 @@
+---
+- name: Check installed apps
+  hosts: all
+  tasks:
+
+  - name: Check for "{{ item }}"
+    stat:
+      path: "/Applications/{{ item }}.app"
+    with_items:
+      - "GitHub Desktop"
+      - "Telegram"
+      - "iTerm"
+      - "Xcode"
+    register: app
+    when: app.stat.isdir is not defined
+#  - debug:
+#      msg: "{{app['results'][0]['invocation']['module_args']['path']}} is not installed"
+#    when: app.stat.isdir is not defined
+#  - debug:
+#      msg: "{{app['results'][1]['invocation']['module_args']['path']}} is not installed"
+#    when: app.stat.isdir is not defined
+#  - debug:
+#      msg: "{{app['results'][2]['invocation']['module_args']['path']}} is not installed"
+#    when: app.stat.isdir is not defined
