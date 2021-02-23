@@ -12,7 +12,18 @@
       - "iTerm"
       - "Xcode"
     register: app
-    when: app.stat.isdir is not defined
+
+  - debug:
+      msg: "{{ app['results'][item]['item'] }} is not installed on {{ inventory_hostname }}"
+    when: app['results'][item]['stat']['exists'] == False
+    with_items:
+      - 0
+      - 1
+      - 2
+      - 3
+
+
+
 #  - debug:
 #      msg: "{{app['results'][0]['invocation']['module_args']['path']}} is not installed"
 #    when: app.stat.isdir is not defined
